@@ -5,7 +5,7 @@ import './clear-all.css';
 export default class ClearAll extends Component {
     render() {
         return (
-            <button className="clear-all">C</button>
+            <button className="clear-all" onClick={this.props.ClearAll}>C</button>
         )
     }
 }

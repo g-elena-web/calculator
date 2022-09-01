@@ -5,7 +5,7 @@ import './equals.css';
 export default class Equals extends Component {
     render() {
         return (
-            <button className="equals">=</button>
+            <button className="equals" onClick={this.props.onPress}>=</button>
         )
     }
 }

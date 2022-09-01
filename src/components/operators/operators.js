@@ -3,6 +3,12 @@ import React, { Component } from "react";
 import './operators.css';
 
 export default class Operators extends Component {
+
+    pressOperator = (event) => {
+        const op = event.target.value;
+        this.props.onPress(op);
+    }
+
     render() {
         const operators = [
             {
@@ -24,7 +30,7 @@ export default class Operators extends Component {
           ];
 
           const opButtons = operators.map(({char, name}) =>
-                <button id={name} value={char} key={name}>{char}</button>
+                <button id={name} value={char} key={name} onClick={this.pressOperator}>{char}</button>
             );
 
         return (
