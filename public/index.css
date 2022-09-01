@@ -1,0 +1,24 @@
+:root {
+    --grey: #ABABAB;
+    --lightpink: #F9E5EB;
+    --pink: #E5B3C1;
+    --darkpink: #D590A3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -14,13 +14,13 @@ export default class Operators extends Component {
     render() {
 
           const opButtons = operators.map(({char, name}) =>
-                <button id={name} value={char} key={name} onClick={this.pressOperator}>{char}</button>
+                <button className={name} value={char} key={name} onClick={this.pressOperator}>{char}</button>
             );
 
         return (
-            <div className="operators">
+            <>
                 {opButtons}
-            </div>
+            </>
         )
     }
 }

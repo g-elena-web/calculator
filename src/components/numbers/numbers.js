@@ -13,12 +13,12 @@ export default class Numbers extends Component {
 
     render() {
         const numButtons = numbers.map((num, i) =>
-                <button id={num} value={i} key={num} onClick={this.pressNumber}>{i}</button>
+                <button className={num} value={i} key={num} onClick={this.pressNumber}>{i}</button>
             );
         return (
-            <div className="numbers">
+            <>
                 {numButtons}
-            </div>
+            </>
         )
     }
 }

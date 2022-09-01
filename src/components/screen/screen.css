@@ -1,0 +1,24 @@
+.screen {
+    max-width: 100%;
+    background-color: var(--grey);
+    margin-bottom: 0.5em;
+    padding: 0 0.5em;
+    border-radius: 0.5em;
+    border: 3px solid var(--darkpink);
+    overflow: auto;
+    overflow-wrap: break-word;
+}
+
+.screen p {
+    margin: 0;
+}
+
+.expression {
+    text-align: right;
+    font-size: 0.8em;
+}
+
+.display {
+    text-align: right;
+    font-size: 1.4em;
+}
