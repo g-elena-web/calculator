@@ -10,6 +10,7 @@ import Screen from "../screen";
 import $ from "jquery";
 
 import './app.css';
+import { numbers, operators } from "../../resources/buttons";
 
 export default class App extends Component {
 
@@ -272,25 +273,38 @@ export default class App extends Component {
 
         if (Number.isInteger(Number(key))) {
             this.pressNumber(Number(key));
+            this.activateButton(numbers[key]);
         } else if (regex.test(key)) {
             this.pressOperator(key);
+            this.activateButton(operators.filter(el => el.char === key)[0].name);
         } else switch(key) {
             case '.':
                 this.pressDecimal();
+                this.activateButton("decimal");
                 break;
             case 'Backspace':
                 this.deleteLast();
+                this.activateButton("delete-last");
                 break;
             case 'Delete':
                 this.clearAll();
+                this.activateButton("clear-all");
                 break;
             case '=':
             case 'Enter':
                 this.evalOp();
+                this.activateButton("equals");
                 break;
             default:
                 break;
         }
+    }
+
+    activateButton(name) {
+        const btnClass = '.' + name;
+        $(btnClass).focus();
+        $(btnClass).addClass("active");
+        setTimeout(function(){$(btnClass).removeClass("active")}, 500);
     }
 
     componentDidMount() {

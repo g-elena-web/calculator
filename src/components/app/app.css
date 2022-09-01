@@ -45,3 +45,11 @@ button:hover {
     box-shadow: 0 4px var(--darkpink), 0 0 13px 10px var(--pink) inset;
     color: var(--darkpink);
 }
+
+button:active,
+.active {
+    background-color: var(--lightpink);
+    box-shadow: 0 0 13px 10px var(--pink) inset;
+    color: var(--darkpink);
+    transform: translateY(4px);
+}
