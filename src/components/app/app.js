@@ -309,7 +309,7 @@ export default class App extends Component {
 
     componentDidMount() {
         $(document).keydown(this.pressKey);
-        Array.from(document.getElementsByTagName("button")).forEach(el => $(el).css("grid-area", $(el).attr("class")));
+        Array.from($("button")).forEach(el => $(el).css("grid-area", $(el).attr("class")));
     }
 
     render() {
