@@ -7,6 +7,8 @@ import Numbers from "../numbers";
 import Operators from "../operators";
 import Screen from "../screen";
 
+import $ from "jquery";
+
 import './app.css';
 
 export default class App extends Component {
@@ -48,21 +50,21 @@ export default class App extends Component {
                 }
             } else {
                 this.setState(state => ({
-                    lastVal: num,
+                    lastVal: num.toString(),
                     full: state.full.substr(0, state.full.length - 1) + num
                 }));
             }
         } else {
             this.setState(state => ({
                 full: state.full + num,
-                lastVal: num,
+                lastVal: num.toString(),
                 curOper: ''
             }));
         }
     }
 
     pressOperator = (op) => {
-        const { full, curOper, ifEval, lastVal, res } = this.state;
+        const { curOper, ifEval, res } = this.state;
         
         if (ifEval) {
             this.setState({
@@ -95,7 +97,7 @@ export default class App extends Component {
                         full: state.full.substr(0, state.full.length - 2) + op
                 }));
         }
-      }
+    }
 
     pressDecimal = () => {
         const { ifEval } = this.state;
@@ -264,9 +266,38 @@ export default class App extends Component {
         });
     }
 
-    render() {
-        const { full, lastVal, curOper, ifEval, res } = this.state;
+    pressKey = (event) => {
+        const key = event.key;
+        const regex = /[\*\/\+-]+/g;
 
+        if (Number.isInteger(Number(key))) {
+            this.pressNumber(Number(key));
+        } else if (regex.test(key)) {
+            this.pressOperator(key);
+        } else switch(key) {
+            case '.':
+                this.pressDecimal();
+                break;
+            case 'Backspace':
+                this.deleteLast();
+                break;
+            case 'Delete':
+                this.clearAll();
+                break;
+            case '=':
+            case 'Enter':
+                this.evalOp();
+                break;
+            default:
+                break;
+        }
+    }
+
+    componentDidMount() {
+        $(document).keydown(this.pressKey);
+    }
+
+    render() {
         return (
             <div className="app">
                 <Screen {...this.state} />
